@@ -29,11 +29,13 @@ class HomeController extends Controller
         $request->validate([
             'p_id' => 'required',
             'tittle' => 'required',
-            'description' => 'description',
+            'description' => 'required',
 
             'complete' => 'required',
 
         ]);
+
+        
 
         Task::create([
             'p_id' => $request->p_id,
