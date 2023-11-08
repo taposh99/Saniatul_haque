@@ -1,0 +1,112 @@
+Slug;
+    public function blog(Request $request)
+    {
+        // dd($request);
+     
+
+      
+        $blog = new Blog();
+        $blog->color_code = $request->color_code;
+        $blog->category_id = $request->category_id;
+        $blog->sub_category_id = $request->sub_category_id;
+        $blog->slug = $this->makeSlug($request);
+
+        $blog->save();
+        return redirect('/all-blog')->with('message', 'Success');
+    }
+    private function makeSlug($request){
+        if($request->slug){
+            $str=$request->slug;
+            return preg_replace('/\s+/u','-',trim($str));
+        }
+        $str=$request->course_name;
+        return preg_replace('/\s+/u','-',trim($str));
+    }
+
+.....................................................
+image function:
+$course->image=$this->saveImage($request);
+
+private function saveImage ($request){
+    $image=$request->file('image');
+    $imageName=rand().'.'.$image->getClientOriginalExtension();
+    $directory='adminAsset/teacher-image/';
+    $imgUrl=$directory.$imageName;
+    $image->move($directory,$imageName);
+    return $imgUrl;
+}
+
+error validation
+                                                          form code er age bosate hbe
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+                                                       controller
+public function saveCourse (Request $request){
+    $this->validate($request,[
+    'course_name'=>'required|unique:courses,course_name|string|min:5|max:20',
+    'course_fee'=>'required|unique:courses,course_fee'
+    ]);
+
+
+LOGOUT
+<li>
+    <a class="dropdown-item"  href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="icon ion-power"></i> logout
+        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+
+    </a>
+</li>
+
+Current date show
+<div class="form-group" >
+    <div class="input-group">
+        <span  class="input-group-addon"><b>Date:</b></span>
+
+        <input class="form-control"  id="currentDate" " type="date" name="date"/>
+    </div>
+</div>
+
+<script>
+    var date = new Date();
+    var currentDate = date.toISOString().slice(0,10);
+
+    document.getElementById('currentDate').value = currentDate;
+</script>
+
+Successfully messege
+<!-- message -->
+@if(session()->has('message'))
+<p class="alert alert-success text-center mt-4">{{ session()->get('message') }}</p>
+@elseif(session()->has('error'))
+<p class="alert alert-danger text-center mt-4">{{ session()->get('error') }}</p>
+@endif
+
+
+
+
+
+#Total amout + total customer 
+class DashboardController extends Controller
+{
+   public function dashboard5(){
+
+       return view('dashboard.index',[
+          'total_customer'=> Customer::all()->count(),
+           'total_purchase' => DB::table("purchase_orders")->sum('total'),
+          'total_sales' => DB::table('sales_estimates')->sum('total'),
+          'total_expenses' => DB::table('invoices')->sum('totalamount'),
+       ]);
+   }
+}
+ show dashboard
+<div class="card-body text-center">Total Customer</div>
+<p style="text-align: center;font-size: 18px">{{$total_customer}}</p>
+
