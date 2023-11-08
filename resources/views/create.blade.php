@@ -19,17 +19,17 @@
     <h1>Dashboard!</h1>
 
   </div>
-  
+
 
   @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
 
 
   <div class="container">
@@ -38,27 +38,27 @@
       <div class="row">
         <div class="col">
           <label for="id" class="form-label">ID</label>
-         
+
           <input type="text" name="id" class="form-control" placeholder="id">
-        
-         
+
+
 
           <label for="Name" class="form-label"> tittle</label>
           <input type="text" name="tittle" class="form-control" placeholder="tittle">
 
-       
 
-        
+
+
         </div>
         <div class="col">
-        <label for="description" class="form-label"> description</label>
+          <label for="description" class="form-label"> description</label>
           <input type="text" name="description" class="form-control" placeholder="description">
 
-        <label for="area" class="form-label">Completed</label>
+          <label for="area" class="form-label">Completed</label>
           <select name="complete" id="area" class="form-control">
             <option value="Yes">Yes</option>
             <option value="no">No</option>
-        
+
           </select>
         </div>
       </div>
@@ -79,7 +79,7 @@
           <th scope="col"> tittle</th>
           <th scope="col">description</th>
           <th scope="col">complete</th>
-       
+
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -93,8 +93,6 @@
           <td>{{ $data->tittle }}</td>
           <td>{{ $data->description }} </td>
           <td>{{ $data->complete }} </td>
-    
-
 
           <td>
             <div class="btn-group">
