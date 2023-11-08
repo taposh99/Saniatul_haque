@@ -39,11 +39,11 @@
         <div class="col">
           <label for="id" class="form-label">ID</label>
 
-          <input type="text" name="id" class="form-control" placeholder="id">
+          <input type="text" name="p_id" class="form-control" placeholder="id">
 
 
 
-          <label for="Name" class="form-label"> tittle</label>
+          <label for="tittle" class="form-label"> tittle</label>
           <input type="text" name="tittle" class="form-control" placeholder="tittle">
 
 
@@ -54,7 +54,7 @@
           <label for="description" class="form-label"> description</label>
           <input type="text" name="description" class="form-control" placeholder="description">
 
-          <label for="area" class="form-label">Completed</label>
+          <label for="complete" class="form-label">Completed</label>
           <select name="complete" id="area" class="form-control">
             <option value="Yes">Yes</option>
             <option value="no">No</option>
@@ -75,8 +75,8 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col"> ID</th>
-          <th scope="col"> tittle</th>
+          <th scope="col">ID</th>
+          <th scope="col">tittle</th>
           <th scope="col">description</th>
           <th scope="col">complete</th>
 
@@ -89,7 +89,7 @@
 
         <tr>
 
-          <td>{{ $data->id }}</td>
+          <td>{{ $data->p_id }}</td>
           <td>{{ $data->tittle }}</td>
           <td>{{ $data->description }} </td>
           <td>{{ $data->complete }} </td>

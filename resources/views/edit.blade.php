@@ -21,7 +21,7 @@
             <input type="text" name="data_id" hidden value="{{ $home->id }}">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">ID</label>
-              <input type="text" name="id" class="form-control"  required value="{{ $home->id }}">
+              <input type="text" name="p_id" class="form-control"  required value="{{ $home->p_id }}">
               
             </div>
 

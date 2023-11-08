@@ -27,25 +27,25 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
+            'p_id' => 'required',
             'tittle' => 'required',
             'description' => 'description',
 
             'complete' => 'required',
-       
+
         ]);
-    
+
         Task::create([
-            'id' => $request->id,
+            'p_id' => $request->p_id,
             'tittle' => $request->tittle,
             'description' => $request->description,
             'complete' => $request->complete,
-           
+
         ]);
-    
+
         return back()->with('success', 'Data created successfully');
     }
-    
+
 
     public function edit($id)
     {
@@ -53,7 +53,7 @@ class HomeController extends Controller
         return view('edit', compact('home'));
     }
 
- 
+
 
 
 
@@ -62,7 +62,7 @@ class HomeController extends Controller
         $home = Task::find($request->data_id);
 
         $home->update([
-            'id' => $request->id,
+            'p_id' => $request->p_id,
             'tittle' => $request->tittle,
             'description' => $request->description,
         ]);
